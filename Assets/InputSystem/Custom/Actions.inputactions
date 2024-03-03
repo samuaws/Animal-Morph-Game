@@ -1,0 +1,34 @@
+{
+    "name": "Actions",
+    "maps": [
+        {
+            "name": "Transformations",
+            "id": "78e6f0dc-d617-4e3d-af83-b246fe77e84a",
+            "actions": [
+                {
+                    "name": "Tiger",
+                    "type": "Button",
+                    "id": "9964f5b0-6735-49bb-a85f-c59546f8eaaa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "01c8752e-101c-46cf-b4ea-b066ef3e422a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tiger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
