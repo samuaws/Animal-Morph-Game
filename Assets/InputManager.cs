@@ -8,13 +8,14 @@ public class InputManager : MonoBehaviour
 {
     private Actions actions;
     private CharacterFormSwitcher characterFormSwitcher;
+    public FormStats horseSO;
 
     private void Awake()
     {
         characterFormSwitcher = GetComponent<CharacterFormSwitcher>();
         actions = new Actions();
         actions.Enable();
-        actions.Transformations.Tiger.performed += _ => characterFormSwitcher.SwitchForms();
+        actions.Transformations.Horse.performed += _ => characterFormSwitcher.SwitchForms(horseSO);
 
     }
 }

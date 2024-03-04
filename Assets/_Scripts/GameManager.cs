@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-  public void Quit()
+    public static GameManager Instance;
+    public GameObject player;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    public void Quit()
     {
         Application.Quit();
     }

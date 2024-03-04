@@ -35,6 +35,15 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Horse"",
+                    ""type"": ""Button"",
+                    ""id"": ""cdb37f67-9dae-4622-a3dd-24d273b1c3f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @Actions: IInputActionCollection2, IDisposable
                     ""action"": ""Tiger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02476859-b0c3-4883-967b-19975a3b83e4"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @Actions: IInputActionCollection2, IDisposable
         // Transformations
         m_Transformations = asset.FindActionMap("Transformations", throwIfNotFound: true);
         m_Transformations_Tiger = m_Transformations.FindAction("Tiger", throwIfNotFound: true);
+        m_Transformations_Horse = m_Transformations.FindAction("Horse", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -119,11 +140,13 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Transformations;
     private List<ITransformationsActions> m_TransformationsActionsCallbackInterfaces = new List<ITransformationsActions>();
     private readonly InputAction m_Transformations_Tiger;
+    private readonly InputAction m_Transformations_Horse;
     public struct TransformationsActions
     {
         private @Actions m_Wrapper;
         public TransformationsActions(@Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Tiger => m_Wrapper.m_Transformations_Tiger;
+        public InputAction @Horse => m_Wrapper.m_Transformations_Horse;
         public InputActionMap Get() { return m_Wrapper.m_Transformations; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -136,6 +159,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Tiger.started += instance.OnTiger;
             @Tiger.performed += instance.OnTiger;
             @Tiger.canceled += instance.OnTiger;
+            @Horse.started += instance.OnHorse;
+            @Horse.performed += instance.OnHorse;
+            @Horse.canceled += instance.OnHorse;
         }
 
         private void UnregisterCallbacks(ITransformationsActions instance)
@@ -143,6 +169,9 @@ public partial class @Actions: IInputActionCollection2, IDisposable
             @Tiger.started -= instance.OnTiger;
             @Tiger.performed -= instance.OnTiger;
             @Tiger.canceled -= instance.OnTiger;
+            @Horse.started -= instance.OnHorse;
+            @Horse.performed -= instance.OnHorse;
+            @Horse.canceled -= instance.OnHorse;
         }
 
         public void RemoveCallbacks(ITransformationsActions instance)
@@ -163,5 +192,6 @@ public partial class @Actions: IInputActionCollection2, IDisposable
     public interface ITransformationsActions
     {
         void OnTiger(InputAction.CallbackContext context);
+        void OnHorse(InputAction.CallbackContext context);
     }
 }
